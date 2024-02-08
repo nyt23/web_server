@@ -21,7 +21,7 @@ async function authenticateUser(event){
         // Save data to sessionStorage
         sessionStorage.setItem('username', username);
         document.cookie = "sessionToken=" + sessionToken;
-        window.location.href = '/dashboard';
+        window.location.href = "/dashboard";
 
 
     } else {
