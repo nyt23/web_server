@@ -3,83 +3,33 @@ const app = express()
 
 const port = 3000
 const database = require('./database.js');
-const cookieParser = require('cookie-parser')
 
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
-app.use(cookieParser())
 
 
-app.get('/login', (req, res) =>{
-    res.sendFile(__dirname + '/public/login-page-scripts/login.html')
+app.get('/login.html', (req, res) =>{
+    res.sendFile(login.html)
 })
 
 // configuration /dashboard.html to /dashboard
 
 app.get('/dashboard', (req, res) => {
-        res.sendFile(__dirname + '/public/dashboard-page-scripts/dashboard.html')
-        console.log('Cookies:', req.cookies)
+    res.redirect('/dashboard.html')
 })
 
 // configuration /home to /
 app.get('/home', (req, res) => {
-    res.sendFile(__dirname + '/public/landing-page-scripts/landing-page.html')
+    res.redirect('http://localhost:3000/landing-page.html')
 })
+
 app.get('/', (req,res) => {
     res.redirect('/home');
 });
 
 
 
-
-app.post('/api/login', (req, res) => {
-
-    let hasAuthenticatedUser = false;
-    // for loop for multiple users
-    for (let i = 0; i < database.users.length; i++) {
-        const userToCheck = database.users[i];
-
-        //if(req.body.username === database.users.username) {
-        if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
-            //console.log(`Token: ${req.body.username}_${Date.now()}`);
-            const sessionToken = req.body.username + "_" + Date.now();
-            console.log(sessionToken)
-            res.send(sessionToken);
-            //res.send(userToCheck.profilePicturePath);
-            //res.sendFile(__dirname + '/public/dashboard-page-scripts/dashboard.html')
-            hasAuthenticatedUser = true;
-            break; // related to the for loop
-        }
-    }
-
-    if (hasAuthenticatedUser === false) {
-        res.sendStatus(404);
-    }
-});
-
-app.get('/api/:username/city', (req, res) => {
-    //console.log(req.body); // data is on the body object, to specify body.name
-
-    let hasAuthenticatedUser = false;
-    // for loop for multiple users
-    for (let i = 0; i < database.users.length; i++) {
-        const userToCheck = database.users[i];
-        //if(req.body.username === database.users.username) {
-        if (userToCheck.username === req.params.username) {
-            //console.log(`Token: ${req.body.username}_${Date.now()}`);
-            //const token = req.body.username + "_" + Date.now();
-            res.send(userToCheck.city);
-            hasAuthenticatedUser = true;
-            break; // related to the for loop
-        }
-    }
-
-    if (hasAuthenticatedUser === false) {
-        res.send(404);
-    }
-});
-
-
+// route configuration
 app.get('/api/:username/profile-picture-path', (req, res) => {
 
     let hasAuthenticatedUser = false;
@@ -87,18 +37,49 @@ app.get('/api/:username/profile-picture-path', (req, res) => {
     for (let i = 0; i < database.users.length; i++) {
         const userToCheck = database.users[i];
 
-        if(userToCheck.username === req.params.username) {
+        //if(req.body.username === database.users.username) {
+        if (userToCheck.username === req.params.username) {
+
+
+            //console.log(`Token: ${req.body.username}_${Date.now()}`);
+            //const token = req.body.username + "_" + Date.now();
             res.send(userToCheck.profilePicturePath);
             hasAuthenticatedUser = true;
-            break;
+            break; // related to the for loop
         }
     }
 
-    if (hasAuthenticatedUser === false) {
-        res.sendStatus(404);
-    }
+        if (hasAuthenticatedUser === false) {
+            res.sendStatus(404);
+        }
+
 
 });
+
+// respond token
+    app.post('/api/login', (req, res) => {
+        console.log(req.body); // data is on the body object, to specify body.name
+
+        let hasAuthenticatedUser = false;
+        // for loop for multiple users
+        for (let i = 0; i < database.users.length; i++) {
+            const userToCheck = database.users[i];
+            if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
+
+
+                console.log(`Token: ${req.body.username}_${Date.now()}`);
+                const token = req.body.username + "_" + Date.now();
+                res.send(token);
+                hasAuthenticatedUser = true;
+                break; // related to the for loop
+            }
+        }
+
+        if (hasAuthenticatedUser === false) {
+            res.sendStatus(401);
+        }
+    });
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
