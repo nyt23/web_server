@@ -20,7 +20,7 @@ app.get('/dashboard', (req, res) => {
 
 // configuration /home to /
 app.get('/home', (req, res) => {
-    res.redirect('http://localhost:3000/landing-page.html')
+    res.redirect('/landing-page.html')
 })
 
 app.get('/', (req,res) => {
