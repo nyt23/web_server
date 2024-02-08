@@ -1,10 +1,7 @@
 # web_server
 
-email: nyt.young11@gmail.com
-password: wygmu0-dycseH-gemmed
 
-
-database: <br>
+database users: <br>
 
   username:'ting',
   password: '8888',
