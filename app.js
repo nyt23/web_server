@@ -17,13 +17,8 @@ app.get('/login', (req, res) =>{
 // configuration /dashboard.html to /dashboard
 
 app.get('/dashboard', (req, res) => {
-    const getSessionToken = req.cookies.sessionToken;
-    if (!getSessionToken) {
-        res.redirect('/login');
-    } else {
         res.sendFile(__dirname + '/public/dashboard-page-scripts/dashboard.html')
         console.log('Cookies:', req.cookies)
-    }
 })
 
 // configuration /home to /
