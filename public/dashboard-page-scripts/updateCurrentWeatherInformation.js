@@ -1,4 +1,3 @@
-
 async function updateCurrentWeatherInformation() {
     const openWeatherAPI = '5873deca76d43e9f25813477324ca93e';
     const username = sessionStorage.getItem('username');
@@ -45,6 +44,21 @@ async function updateCurrentWeatherInformation() {
             case 'Clouds':
                 weatherPicture.innerHTML = "<img src='/weather-pictures/clouds.jpg'>";
                 break;
+            case 'Rain':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/rain.jpg'>";
+                break;
+            case 'Clear':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/clear.jpg'>";
+                break;
+            case 'Thunderstorm':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/thunderstorm.jpg'>";
+                break;
+            case 'Drizzle':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/drizzle.jpg'>";
+                break;
+            case 'Mist':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/mist.jpg'>";
+                break;
         }
 
     } catch (error) {
@@ -55,26 +69,3 @@ async function updateCurrentWeatherInformation() {
         weatherButton.replaceWith(errorMessage);
     }
 }
-
-
-
-/*
-// task2 for lecture 6
-const weatherInfo = document.createElement('div');
-weatherInfo.innerText = `Currently, the temperature in Berlin is ${temperature} °C`;
-// replace the button with new element
-const weatherButton = document.getElementById('weatherButton')
-weatherButton.replaceWith(weatherInfo);
-
-} catch(error) {
-console.error('Error fetching weather information: ', error);
-const errorMessage = document.createElement('div');
-errorMessage.innerText = 'Failed to fetch weather data.';
-const weatherButton = document.getElementById('weatherButton')
-weatherButton.replaceWith(errorMessage);
-}
-
-}
-
-
-*/
