@@ -1,4 +1,3 @@
-
 async function updateForecast() {
     const openWeatherAPI = '5873deca76d43e9f25813477324ca93e';
     const username = sessionStorage.getItem('username');
@@ -17,11 +16,14 @@ async function updateForecast() {
         const weatherForecastData = await response.json();
         console.log(weatherForecastData);
 
+
+
+
     document.getElementById('forecast_line').innerText = `Weather Forecast for ${city}:`
 
     const forecastContainer = document.getElementById('forecast');
     for (let i = 0; i < weatherForecastData.list.length; i++) {
-        const dateTimeString = weatherForecastData['list'][i].dt_txt;
+        const dateTimeString = weatherForecastData.list[i].dt_txt;
         // format the date
         const date = new Date(dateTimeString);
         const formattedDate = date.toLocaleDateString('en-US', { //options
@@ -30,10 +32,10 @@ async function updateForecast() {
             day: 'numeric',
             hour: 'numeric',
         });
-        console.log(dateTimeString);
-        const description = weatherForecastData['list'][i].weather[0].description;
-        const temperature = Math.round(weatherForecastData['list'][i].main.temp);
-        //const weather_icon = weatherForecastData['list'][i].weather[0].icon;
+        //console.log(dateTimeString);
+        const description = weatherForecastData.list[i].weather[0].description;
+        const temperature = Math.round(weatherForecastData.list[i].main.temp);
+        //const weather_icon = weatherForecastData.list[i].weather[0].icon;
         //console.log(description);
         //console.log(temperature);
 
@@ -49,7 +51,4 @@ async function updateForecast() {
 
         forecastContainer.appendChild(card);
     }
-
-
 }
-
