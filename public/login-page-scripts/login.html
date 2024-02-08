@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/login-page-scripts/login.css">
+  <script src="/login-page-scripts/password-toggle.js" defer></script>
+  <script src="/login-page-scripts/authentication.js" defer></script>
+</head>
+<body>
+  <div class="login-page">
+    <div class="welcome-section">
+      <img src="/login-page-scripts/top_ele.png" alt="top element" class="top_ele">
+      <img src="/login-page-scripts/bottom_ele.png" alt="bottom element" class="bottom_ele">
+        <div class="welcome-section-content">
+          <div class="h1-box">
+            <h1>Welcome to MyWeather</h1>
+          </div>
+            <div class="slogan">
+              <p>Because Every Day is Unique, Just Like Your Weather</p>
+            </div>
+          </div>
+    </div>
+    <div class="login-section">
+      <a class="back-arrow" href="http://localhost:3000/home">←</a>
+      <div class="login-section-content">
+        <h2>Login</h2>
+        <div class="subline">
+          <p>Please authenticate yourself to continue.</p>
+        </div>
+        <form action="/api/login" method="post" class="login-form"> <!--action="/api/login" -->
+          <input type="text" placeholder="Name" id="username" name="username">
+          <input type="password" placeholder="Password" id="password-field" name="password">
+          <input type="button" id="password-toggle" value="Show password" onclick="togglePassword()">
+          <div id="hover-button">
+            <input class="button" type="submit" value="Get Started!" onclick="authenticateUser(event)">
+          </div>
+        </form>
+          <div id="validation">
+
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

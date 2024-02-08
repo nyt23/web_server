@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/dashboard-page-scripts/dashboard.css">
+  <script src="/dashboard-page-scripts/updateCurrentWeatherInformation.js" defer></script>
+  <script src="/dashboard-page-scripts/logOut.js" defer></script>
+  <script src="/dashboard-page-scripts/updateUserData.js" defer></script>
+  <script src="/dashboard-page-scripts/getWeatherInformation.js" defer></script>
+  <script src="/dashboard-page-scripts/updateForecast.js" defer></script>
+  <title>Dashboard</title>
+</head>
+
+<body onload="updateUserData()">
+  <div class="heading">
+    <h1 id="username_input"></h1>
+  </div>
+
+  <div class="profile">
+    <img src='' alt="profile photo" style="width:60px;height:60px" id="profile">
+  </div>
+
+  <div class="weatherButton">
+    <button id="weatherButton" onclick="updateCurrentWeatherInformation(); updateForecast()">Get current weather!</button>
+  </div>
+
+  <section>
+  <div id="weatherPicture"></div>
+  </section>
+
+  <section>
+  <div id="forecast_line"></div>
+  <div id="forecast" class="scroll-container"></div>
+  </section>
+
+  <div id="search">
+    <input type="search" id="searchBar" placeholder="Search...">
+    <button id="searchButton" onclick="getWeatherInformation()">Get temperature</button>
+  </div>
+
+  <div id="result">
+
+  </div>
+
+
+  <button id="logout" onclick="logOut()">Log out</button>
+</body>
+</html>

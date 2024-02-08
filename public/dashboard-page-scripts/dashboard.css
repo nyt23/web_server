@@ -1,0 +1,70 @@
+
+body {
+    font-family: "Menlo";
+}
+
+
+.heading {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100px;
+    padding-top: 15px;
+}
+
+
+.profile {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+
+
+
+.weatherButton {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: -210px;
+    height: 32px;
+    font-size: small;
+}
+
+#weatherButton {
+    /* Button styles */
+    font-family:"Andale Mono";
+    background-color: aliceblue;
+    border-radius: 5px;
+    border: solid lightgrey;
+    font-size: small;
+}
+
+#logout {
+    background-color: rgba(211, 211, 211, 0.3);
+    font-family:"Andale Mono";
+    border-radius: 5px;
+    border: solid lightgrey;
+    position: absolute;
+    top:25px;
+    right:30px;
+}
+
+.scroll-container {
+    overflow-x: scroll;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.card {
+    flex: 0 0 auto; /* Prevent cards from stretching */
+    width: 200px; /* Set a fixed width for each card */
+    border: 1px solid #ccc; /* Add a border for visual structure */
+    border-radius: 10px; /* Round the corners */
+    padding: 10px;
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+.card h3, .card p {
+    margin: 5px 0; /* Add some spacing around text */
+}
