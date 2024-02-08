@@ -59,6 +59,9 @@ async function updateCurrentWeatherInformation() {
             case 'Mist':
                 weatherPicture.innerHTML = "<img src='/weather-pictures/mist.jpg'>";
                 break;
+            case 'Snow':
+                weatherPicture.innerHTML = "<img src='/weather-pictures/snow.jpg'>";
+                break;
         }
 
     } catch (error) {
