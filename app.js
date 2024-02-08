@@ -20,7 +20,7 @@ app.get('/dashboard', (req, res) => {
 
 // configuration /home to /
 app.get('/home', (req, res) => {
-    res.redirect('/landing-page.html')
+    res.sendFile(__dirname + '/public/landing-page-scripts/landing-page.html')
 })
 
 app.get('/', (req,res) => {
